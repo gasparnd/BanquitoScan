@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173A72D4456FC00824C77 /* AppDelegate.swift */; };
-		EB6173AA2D4456FC00824C77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173A92D4456FC00824C77 /* SceneDelegate.swift */; };
-		EB6173AC2D4456FC00824C77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173AB2D4456FC00824C77 /* ViewController.swift */; };
-		EB6173AF2D4456FC00824C77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173AD2D4456FC00824C77 /* Main.storyboard */; };
 		EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B02D4456FD00824C77 /* Assets.xcassets */; };
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
+		EB6173C02D445A3A00824C77 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173BF2D445A3A00824C77 /* TabBarViewController.swift */; };
+		EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173C12D445AA300824C77 /* HomeViewController.swift */; };
+		EB6173C42D445AF100824C77 /* SavedAccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173C32D445AF100824C77 /* SavedAccountsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EB6173A42D4456FC00824C77 /* BanquitoScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanquitoScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6173A72D4456FC00824C77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EB6173A92D4456FC00824C77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EB6173AB2D4456FC00824C77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EB6173AE2D4456FC00824C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB6173B02D4456FD00824C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB6173B32D4456FD00824C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB6173B52D4456FD00824C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB6173BF2D445A3A00824C77 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		EB6173C12D445AA300824C77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EB6173C32D445AF100824C77 /* SavedAccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAccountsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,39 @@
 		EB6173A62D4456FC00824C77 /* BanquitoScan */ = {
 			isa = PBXGroup;
 			children = (
-				EB6173A72D4456FC00824C77 /* AppDelegate.swift */,
-				EB6173A92D4456FC00824C77 /* SceneDelegate.swift */,
-				EB6173AB2D4456FC00824C77 /* ViewController.swift */,
-				EB6173AD2D4456FC00824C77 /* Main.storyboard */,
-				EB6173B02D4456FD00824C77 /* Assets.xcassets */,
-				EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */,
+				EB6173BD2D44586E00824C77 /* Models */,
+				EB6173BC2D44586700824C77 /* Controllers */,
+				EB6173BB2D4457EE00824C77 /* Resources */,
 				EB6173B52D4456FD00824C77 /* Info.plist */,
 			);
 			path = BanquitoScan;
+			sourceTree = "<group>";
+		};
+		EB6173BB2D4457EE00824C77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB6173A72D4456FC00824C77 /* AppDelegate.swift */,
+				EB6173B02D4456FD00824C77 /* Assets.xcassets */,
+				EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EB6173BC2D44586700824C77 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB6173BF2D445A3A00824C77 /* TabBarViewController.swift */,
+				EB6173C12D445AA300824C77 /* HomeViewController.swift */,
+				EB6173C32D445AF100824C77 /* SavedAccountsController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EB6173BD2D44586E00824C77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +151,6 @@
 			files = (
 				EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */,
 				EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */,
-				EB6173AF2D4456FC00824C77 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +161,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB6173AC2D4456FC00824C77 /* ViewController.swift in Sources */,
+				EB6173C02D445A3A00824C77 /* TabBarViewController.swift in Sources */,
+				EB6173C42D445AF100824C77 /* SavedAccountsController.swift in Sources */,
 				EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */,
-				EB6173AA2D4456FC00824C77 /* SceneDelegate.swift in Sources */,
+				EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EB6173AD2D4456FC00824C77 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EB6173AE2D4456FC00824C77 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,7 +313,6 @@
 				INFOPLIST_FILE = BanquitoScan/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,7 +340,6 @@
 				INFOPLIST_FILE = BanquitoScan/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
