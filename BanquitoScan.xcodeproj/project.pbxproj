@@ -8,18 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		EB437B352D65F381003D0298 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B342D65F381003D0298 /* DetailsViewController.swift */; };
+		EB437B3B2D673689003D0298 /* ValidateAndParseBankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B3A2D673689003D0298 /* ValidateAndParseBankData.swift */; };
+		EB437B3D2D673948003D0298 /* RutValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B3C2D673948003D0298 /* RutValidator.swift */; };
+		EB437B3F2D6DCFBB003D0298 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B3E2D6DCFBB003D0298 /* BankAccount.swift */; };
 		EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173A72D4456FC00824C77 /* AppDelegate.swift */; };
 		EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B02D4456FD00824C77 /* Assets.xcassets */; };
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
 		EB6173C02D445A3A00824C77 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173BF2D445A3A00824C77 /* TabBarViewController.swift */; };
 		EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173C12D445AA300824C77 /* HomeViewController.swift */; };
 		EB6173C42D445AF100824C77 /* SavedAccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173C32D445AF100824C77 /* SavedAccountsController.swift */; };
-		EB6173D02D4571F500824C77 /* recognizeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173CF2D4571F500824C77 /* recognizeText.swift */; };
-		EB6173D22D45720E00824C77 /* extractBankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173D12D45720E00824C77 /* extractBankData.swift */; };
+		EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173D12D45720E00824C77 /* BankAccountScanner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EB437B342D65F381003D0298 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		EB437B3A2D673689003D0298 /* ValidateAndParseBankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateAndParseBankData.swift; sourceTree = "<group>"; };
+		EB437B3C2D673948003D0298 /* RutValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutValidator.swift; sourceTree = "<group>"; };
+		EB437B3E2D6DCFBB003D0298 /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
 		EB6173A42D4456FC00824C77 /* BanquitoScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanquitoScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6173A72D4456FC00824C77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6173B02D4456FD00824C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -28,8 +33,7 @@
 		EB6173BF2D445A3A00824C77 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		EB6173C12D445AA300824C77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EB6173C32D445AF100824C77 /* SavedAccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAccountsController.swift; sourceTree = "<group>"; };
-		EB6173CF2D4571F500824C77 /* recognizeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recognizeText.swift; sourceTree = "<group>"; };
-		EB6173D12D45720E00824C77 /* extractBankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extractBankData.swift; sourceTree = "<group>"; };
+		EB6173D12D45720E00824C77 /* BankAccountScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountScanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 		EB6173BD2D44586E00824C77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EB437B3E2D6DCFBB003D0298 /* BankAccount.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,8 +107,9 @@
 		EB6173CE2D454E3B00824C77 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				EB6173CF2D4571F500824C77 /* recognizeText.swift */,
-				EB6173D12D45720E00824C77 /* extractBankData.swift */,
+				EB6173D12D45720E00824C77 /* BankAccountScanner.swift */,
+				EB437B3A2D673689003D0298 /* ValidateAndParseBankData.swift */,
+				EB437B3C2D673948003D0298 /* RutValidator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -182,9 +188,11 @@
 				EB6173C42D445AF100824C77 /* SavedAccountsController.swift in Sources */,
 				EB437B352D65F381003D0298 /* DetailsViewController.swift in Sources */,
 				EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */,
-				EB6173D22D45720E00824C77 /* extractBankData.swift in Sources */,
+				EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */,
 				EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */,
-				EB6173D02D4571F500824C77 /* recognizeText.swift in Sources */,
+				EB437B3D2D673948003D0298 /* RutValidator.swift in Sources */,
+				EB437B3F2D6DCFBB003D0298 /* BankAccount.swift in Sources */,
+				EB437B3B2D673689003D0298 /* ValidateAndParseBankData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
