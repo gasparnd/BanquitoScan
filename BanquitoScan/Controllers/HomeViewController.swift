@@ -22,6 +22,7 @@ class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .always
         title = "Home"
         style()
         layout()
