@@ -8,14 +8,15 @@
 import UIKit
 
 class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    let stackView = UIStackView()
+    private let stackView = UIStackView()
     
     private let button: UIButton =  {
         let button = UIButton()
         
-        button.backgroundColor = .white
-        button.setTitle("Add new Account", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.backgroundColor = .accent
+        button.layer.cornerRadius = 8
+        button.setTitle("Agregar nuevo", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         
         return button
     }()
@@ -31,25 +32,25 @@ class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UIN
 
 extension HomeViewController {
     
-    func style() {
+    private func style() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 20
         
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
     
-    func layout() {
-        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        
-        stackView.addArrangedSubview(button)
-        
-        
-        view.addSubview(stackView)
+    private func layout() {
+
+        view.addSubview(button)
         
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            button.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: button.trailingAnchor, multiplier: 2),
+            button.heightAnchor.constraint(equalToConstant: 40),
+            button.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3)
+            
         ])
         
     }
