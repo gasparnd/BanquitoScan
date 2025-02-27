@@ -10,25 +10,36 @@ import UIKit
 class DetailsViewController: UIViewController {
     
     var bankAccountInfo: BankAccountInfo? = nil
-    let scanner = BankAccountScanner()
+    private let scanner = BankAccountScanner()
     
-    let loader = UIActivityIndicatorView(style: .medium)
+    private let loader = UIActivityIndicatorView(style: .medium)
     
-    let imageView = UIImageView()
-    var image = UIImage()
+    private let imageView = UIImageView()
+    private var image = UIImage()
     
-    let infoView = UIStackView()
+    private let infoView = UIStackView()
     
-    let nameLabel = UILabel()
-    let rutLabel = UILabel()
-    let emailLabel = UILabel()
-    let accountTye = UILabel()
-    let accountNumer = UILabel()
-    let accountBank = UILabel()
+    private let nameLabel = UILabel()
+    private let rutLabel = UILabel()
+    private let emailLabel = UILabel()
+    private let accountTye = UILabel()
+    private let accountNumer = UILabel()
+    private let accountBank = UILabel()
+    
+    private let button: UIButton =  {
+        let button = UIButton(type: .system)
+        
+        button.backgroundColor = .accent
+        button.layer.cornerRadius = 8
+        button.setTitle("Copiar", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Details"
+        title = "Detalles"
         navigationItem.largeTitleDisplayMode = .never
         startLoading()
         style()
@@ -69,6 +80,13 @@ class DetailsViewController: UIViewController {
         
         view.addSubview(infoView)
         
+        // Copy Button
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        button.isHidden = true
+        
+        view.addSubview(button)
+        
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 270),
             imageView.heightAnchor.constraint(equalToConstant: 270),
@@ -78,6 +96,10 @@ class DetailsViewController: UIViewController {
             loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             infoView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 4),
             infoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.topAnchor.constraint(equalToSystemSpacingBelow: infoView.bottomAnchor, multiplier: 3),
+            button.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
+            button.heightAnchor.constraint(equalToConstant: 40),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: button.trailingAnchor, multiplier: 4)
         ])
     }
     
@@ -93,15 +115,37 @@ class DetailsViewController: UIViewController {
     
     private func updateUI(_ info: BankAccountInfo?) {
         guard let accountData = info else { return }
-        nameLabel.text = "Nombre: \(accountData.name)"
+        var name = ""
+        var email = ""
+
+        
+        if let nameVale = accountData.name {
+            name = "Nombre: \(nameVale)"
+        }
+        if let emailVale = accountData.email {
+            email = "Email: \(emailVale)"
+        }
+        
+        bankAccountInfo = accountData
+        nameLabel.text = name
         rutLabel.text = "RUT: \(accountData.rut)"
-        emailLabel.text = "Enail: \(String(describing: accountData.email))"
+        emailLabel.text = email
         accountTye.text = "Tipo: \(accountData.accountType)"
         accountNumer.text = "Cuenta: \(accountData.accountNumber)"
         accountBank.text = "Banco: \(accountData.bank)"
         stopLoading()
+        button.isHidden = false
     }
     
+}
+
+// MARK: - ACTIONS
+
+extension DetailsViewController {
+    @objc func didTapButton() {
+        let info = bankAccountInfo?.formattedInfo()
+        UIPasteboard.general.string = info
+    }
 }
 
 // MARK: - Configure View with image
