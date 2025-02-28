@@ -11,6 +11,7 @@
 		EB437B3B2D673689003D0298 /* ValidateAndParseBankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B3A2D673689003D0298 /* ValidateAndParseBankData.swift */; };
 		EB437B3D2D673948003D0298 /* RutValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B3C2D673948003D0298 /* RutValidator.swift */; };
 		EB437B3F2D6DCFBB003D0298 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B3E2D6DCFBB003D0298 /* BankAccount.swift */; };
+		EB437B422D7139D2003D0298 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B412D7139D2003D0298 /* Toast.swift */; };
 		EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173A72D4456FC00824C77 /* AppDelegate.swift */; };
 		EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B02D4456FD00824C77 /* Assets.xcassets */; };
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
@@ -23,6 +24,7 @@
 		EB437B3A2D673689003D0298 /* ValidateAndParseBankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateAndParseBankData.swift; sourceTree = "<group>"; };
 		EB437B3C2D673948003D0298 /* RutValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutValidator.swift; sourceTree = "<group>"; };
 		EB437B3E2D6DCFBB003D0298 /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
+		EB437B412D7139D2003D0298 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		EB6173A42D4456FC00824C77 /* BanquitoScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanquitoScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6173A72D4456FC00824C77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6173B02D4456FD00824C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB437B402D7139B9003D0298 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				EB437B412D7139D2003D0298 /* Toast.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		EB61739B2D4456FC00824C77 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +72,7 @@
 		EB6173A62D4456FC00824C77 /* BanquitoScan */ = {
 			isa = PBXGroup;
 			children = (
+				EB437B402D7139B9003D0298 /* Extentions */,
 				EB6173CE2D454E3B00824C77 /* Utils */,
 				EB6173BD2D44586E00824C77 /* Models */,
 				EB6173BC2D44586700824C77 /* Controllers */,
@@ -179,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB437B352D65F381003D0298 /* DetailsViewController.swift in Sources */,
+				EB437B422D7139D2003D0298 /* Toast.swift in Sources */,
 				EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */,
 				EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */,
 				EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */,

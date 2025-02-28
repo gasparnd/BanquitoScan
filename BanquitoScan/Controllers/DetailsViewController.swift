@@ -145,6 +145,7 @@ extension DetailsViewController {
     @objc func didTapButton() {
         let info = bankAccountInfo?.formattedInfo()
         UIPasteboard.general.string = info
+        showToast(message: "Datos copiados", type: .success)
     }
 }
 
