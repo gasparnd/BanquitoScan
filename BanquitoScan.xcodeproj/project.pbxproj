@@ -13,6 +13,8 @@
 		EB437B3F2D6DCFBB003D0298 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B3E2D6DCFBB003D0298 /* BankAccount.swift */; };
 		EB437B422D7139D2003D0298 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B412D7139D2003D0298 /* Toast.swift */; };
 		EB437B532D7C790C003D0298 /* RutValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B522D7C790C003D0298 /* RutValidatorTest.swift */; };
+		EB437B562D7C9D83003D0298 /* AccountsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB437B542D7C9D83003D0298 /* AccountsData.xcdatamodeld */; };
+		EB437B7C2D7CB2A6003D0298 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B7B2D7CB2A6003D0298 /* CoreDataManager.swift */; };
 		EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173A72D4456FC00824C77 /* AppDelegate.swift */; };
 		EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B02D4456FD00824C77 /* Assets.xcassets */; };
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
@@ -38,6 +40,8 @@
 		EB437B412D7139D2003D0298 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		EB437B472D7C78E6003D0298 /* BanquitoScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BanquitoScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB437B522D7C790C003D0298 /* RutValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutValidatorTest.swift; sourceTree = "<group>"; };
+		EB437B552D7C9D83003D0298 /* AccountsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccountsData.xcdatamodel; sourceTree = "<group>"; };
+		EB437B7B2D7CB2A6003D0298 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		EB6173A42D4456FC00824C77 /* BanquitoScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanquitoScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6173A72D4456FC00824C77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6173B02D4456FD00824C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,9 +85,18 @@
 			path = BanquitoScanTests;
 			sourceTree = "<group>";
 		};
+		EB437B7A2D7CB28C003D0298 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				EB437B7B2D7CB2A6003D0298 /* CoreDataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		EB61739B2D4456FC00824C77 = {
 			isa = PBXGroup;
 			children = (
+				EB437B542D7C9D83003D0298 /* AccountsData.xcdatamodeld */,
 				EB6173A62D4456FC00824C77 /* BanquitoScan */,
 				EB437B482D7C78E6003D0298 /* BanquitoScanTests */,
 				EB6173A52D4456FC00824C77 /* Products */,
@@ -102,6 +115,7 @@
 		EB6173A62D4456FC00824C77 /* BanquitoScan */ = {
 			isa = PBXGroup;
 			children = (
+				EB437B7A2D7CB28C003D0298 /* Managers */,
 				EB437B402D7139B9003D0298 /* Extentions */,
 				EB6173CE2D454E3B00824C77 /* Utils */,
 				EB6173BD2D44586E00824C77 /* Models */,
@@ -260,10 +274,12 @@
 				EB437B352D65F381003D0298 /* DetailsViewController.swift in Sources */,
 				EB437B422D7139D2003D0298 /* Toast.swift in Sources */,
 				EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */,
+				EB437B562D7C9D83003D0298 /* AccountsData.xcdatamodeld in Sources */,
 				EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */,
 				EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */,
 				EB437B3D2D673948003D0298 /* RutValidator.swift in Sources */,
 				EB437B3F2D6DCFBB003D0298 /* BankAccount.swift in Sources */,
+				EB437B7C2D7CB2A6003D0298 /* CoreDataManager.swift in Sources */,
 				EB437B3B2D673689003D0298 /* ValidateAndParseBankData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,6 +562,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EB437B542D7C9D83003D0298 /* AccountsData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EB437B552D7C9D83003D0298 /* AccountsData.xcdatamodel */,
+			);
+			currentVersion = EB437B552D7C9D83003D0298 /* AccountsData.xcdatamodel */;
+			path = AccountsData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EB61739C2D4456FC00824C77 /* Project object */;
 }

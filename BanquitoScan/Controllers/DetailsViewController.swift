@@ -12,6 +12,8 @@ class DetailsViewController: UIViewController {
     var bankAccountInfo: BankAccountInfo? = nil
     private let scanner = BankAccountScanner()
     
+    private let coreData: CoreDataManager = CoreDataManager.shared
+    
     private let loader = UIActivityIndicatorView(style: .medium)
     
     private let imageView = UIImageView()
@@ -125,7 +127,7 @@ class DetailsViewController: UIViewController {
         }
         var name = ""
         var email = ""
-
+        
         
         if let nameVale = accountData.name {
             name = "Nombre: \(nameVale)"
@@ -154,6 +156,7 @@ extension DetailsViewController {
         let info = bankAccountInfo?.formattedInfo()
         UIPasteboard.general.string = info
         showToast(message: "Datos copiados", type: .success)
+        coreData.crearAccount(with: bankAccountInfo!)
     }
 }
 

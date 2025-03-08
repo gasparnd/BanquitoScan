@@ -18,7 +18,7 @@ struct BankAccountInfo {
     func formattedInfo() -> String {
         var nameValue = ""
         var emailValue = ""
-
+        
         
         if let name = name {
             nameValue = name

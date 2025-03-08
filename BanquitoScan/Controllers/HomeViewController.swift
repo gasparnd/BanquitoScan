@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private let stackView = UIStackView()
+    private let coreData: CoreDataManager = CoreDataManager.shared
+    private var data: [Account] = []
     
     private let button: UIButton =  {
         let button = UIButton()
@@ -24,7 +26,8 @@ class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
-        title = "Home"
+        title = "Inicio"
+        loadData()
         style()
         layout()
     }
@@ -42,7 +45,7 @@ extension HomeViewController {
     }
     
     private func layout() {
-
+        
         view.addSubview(button)
         
         NSLayoutConstraint.activate([
@@ -52,6 +55,15 @@ extension HomeViewController {
             button.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3)
             
         ])
+        
+    }
+    
+    // MARK: - LOAD DATA
+    
+    private func loadData() {
+        let result = coreData.getAccounts()
+        
+        data = result
         
     }
     
