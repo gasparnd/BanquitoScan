@@ -31,7 +31,7 @@ class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UIN
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
         label.textColor = .systemGray
-        label.text = "Sin cunetas agregadas"
+        label.text = "Sin cuentas agregadas"
         
         return label
     }()
@@ -106,6 +106,28 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: account)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            coreData.removeAccount(account: data[indexPath.row])
+            data.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            if data.isEmpty {
+                emptyListLabel.isHidden = false
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let account = data[indexPath.row]
+        
+        let accountInfo = BankAccountInfo(name: account.name, rut: account.rut ?? "", accountType: account.accountType ?? "", accountNumber: account.accountNumber!, bank: account.bank ?? "", email: account.email).formattedInfo()
+        
+        UIPasteboard.general.string = accountInfo
+        showToast(message: "Datos copiados", type: .success)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension HomeViewController {
@@ -123,7 +145,7 @@ extension HomeViewController {
         
         
     }
-     
+    
     
     // MARK: - ACTIONS
     

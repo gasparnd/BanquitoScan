@@ -58,4 +58,9 @@ final class CoreDataManager {
             return []
         }
     }
+    
+    func removeAccount(account: Account) {
+        context.delete(account)
+        saveContext()
+    }
 }
