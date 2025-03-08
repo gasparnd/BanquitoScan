@@ -53,19 +53,40 @@ class ValidateAndParseBankData {
     
     private func normalizeText(_ text: String) -> String {
         let withoutAccents = text.folding(options: .diacriticInsensitive, locale: .current)
-        let lowercase = withoutAccents.lowercased()
-        return lowercase
+            .lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        
+      
+        return withoutAccents
+        
+    }
+    
+    func validateName(_ input: String) -> String {
+        let normalizedInput = normalizeText(input)
+        
+        let regexPattern = #"^(?!.*\b(cuenta|cuenta:|rut:|banco:|tipo de cuenta:|tipo:)\b).+$"#
+        
+        guard let regex = try? NSRegularExpression(pattern: regexPattern, options: .caseInsensitive) else {
+            return ""
+        }
+        
+        let range = NSRange(location: 0, length: normalizedInput.utf16.count)
+        
+        if regex.firstMatch(in: normalizedInput, options: [], range: range) != nil {
+            return ""
+        }
+        
+        return regex.stringByReplacingMatches(in: normalizedInput, options: [], range: range, withTemplate: "")
+        
     }
     
     func validateRut(_ input: String) -> String? {
-        let normalizedinput = normalizeText(input).replacingOccurrences(of: ".", with: "")
-        if normalizedinput.range(of: #"^\d{1,2}\d{3}\d{3}-\d$"#, options: .regularExpression) != nil {
-            let rut = rutValidator.validate(normalizedinput)
-            return normalizedinput
-        }
+        let normalizedinput = normalizeText(input).replacingOccurrences(of: "rut:", with: "").replacingOccurrences(of: "=", with: "")
+           
+        let rut = rutValidator.validate(normalizedinput)
+        return rut
         
         
-        return nil
     }
     
     func validateBank(_ input: String) -> String? {
@@ -88,14 +109,29 @@ class ValidateAndParseBankData {
         }
     }
     
-    func validateAccountnumber(_ input: String) -> Bool {
+    func validateAccountnumber(_ input: String) -> String? {
         let normalizedInput = normalizeText(input)
+        
+        let wordsToRemove = [
+            ":", "numero de cuenta", "numero cuenta",
+            "n° de cuenta", "n° cuenta", "cuenta", "="
+        ]
+        
+        let cleanedText = wordsToRemove.reduce(normalizedInput) { result, word in
+            result.replacingOccurrences(of: word, with: "")
+        }
+           
+        
         let regexPatternForCleanString = "[-_.]"
-        let cleanedString = normalizedInput.lowercased().replacingOccurrences(of: " ", with: "")
+        let cleanedString = cleanedText.lowercased().replacingOccurrences(of: " ", with: "")
             .replacingOccurrences(of: regexPatternForCleanString, with: "", options: .regularExpression)
         
         
         let regexPattern = #"^\d{8,15}$"#
-        return cleanedString.range(of: regexPattern, options: .regularExpression) != nil
+        if cleanedString.range(of: regexPattern, options: .regularExpression) != nil {
+            return cleanedString
+        }
+        
+        return nil
     }
 }

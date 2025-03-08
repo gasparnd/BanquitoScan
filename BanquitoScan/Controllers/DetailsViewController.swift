@@ -114,7 +114,15 @@ class DetailsViewController: UIViewController {
     }
     
     private func updateUI(_ info: BankAccountInfo?) {
-        guard let accountData = info else { return }
+        guard let accountData = info else {
+            stopLoading()
+            let alert = UIAlertController(title: "Lo sentimos", message: "No se a podido escanear correctamente los datos de la imagen", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Entendido", style: .default, handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            present(alert, animated: true)
+            return
+        }
         var name = ""
         var email = ""
 

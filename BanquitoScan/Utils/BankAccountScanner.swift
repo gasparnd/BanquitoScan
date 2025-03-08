@@ -10,6 +10,7 @@ import Vision
 
 class BankAccountScanner {
     let validator = ValidateAndParseBankData()
+    let rutValidator = RutValidator()
     
     func extractBankAccountInfo(from image: UIImage, completion: @escaping (BankAccountInfo?) -> Void) {
         guard let cgImage = image.cgImage else {
@@ -61,10 +62,10 @@ class BankAccountScanner {
                 accountType = formatedAccountType
             } else if let formatedRut = validator.validateRut(line) {
                 print("It is rut")
-                rut = line.trimmingCharacters(in: .whitespaces)
-            } else if validator.validateAccountnumber(line) {
+                rut = formatedRut
+            } else if let formatedAccountNumber = validator.validateAccountnumber(line) {
                 print("It is account number")
-                accountNumber = line.trimmingCharacters(in: .whitespaces)
+                accountNumber = formatedAccountNumber
             } else if let formatedBank = validator.validateBank(line) {
                 print("It is bank")
                 bank = formatedBank
@@ -74,7 +75,16 @@ class BankAccountScanner {
             }
             print("End")
         }
-
+        
+        if accountType == "Cuenta Rut" && !accountNumber.isEmpty {
+            let number = Int(accountNumber) ?? 0
+            let verifyDigit = rutValidator.getVerifyDigit(number)
+            rut = rutValidator.formatRut(rut: accountNumber, dv: verifyDigit)
+        }
+        
+        if rut.isEmpty || accountType.isEmpty || accountNumber.isEmpty  || bank.isEmpty {
+            return nil
+        }
         
         return BankAccountInfo(name: name, rut: rut, accountType: accountType, accountNumber: accountNumber, bank: bank, email: email)
 
