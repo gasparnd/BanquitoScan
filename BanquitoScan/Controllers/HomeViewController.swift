@@ -8,32 +8,47 @@
 import UIKit
 
 class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    private let stackView = UIStackView()
+    
     private let coreData: CoreDataManager = CoreDataManager.shared
     private var data: [Account] = []
     
+    private let tableView = UITableView()
+    
+    private let stackView = UIStackView()
+    
     private let button: UIButton =  {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         
         button.backgroundColor = .accent
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 10
         button.setTitle("Agregar nuevo", for: .normal)
         button.setTitleColor(.white, for: .normal)
         
         return button
     }()
     
+    private let emptyListLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .systemGray
+        label.text = "Sin cunetas agregadas"
+        
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
         title = "Inicio"
-        loadData()
+        
+        setupTableView()
         style()
         layout()
     }
-}
-
-extension HomeViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
     
     private func style() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,30 +57,73 @@ extension HomeViewController {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        
+        emptyListLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func layout() {
         
         view.addSubview(button)
+        view.addSubview(tableView)
+        view.addSubview(emptyListLabel)
         
         NSLayoutConstraint.activate([
             button.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: button.trailingAnchor, multiplier: 2),
             button.heightAnchor.constraint(equalToConstant: 40),
-            button.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3)
+            button.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3),
+            tableView.topAnchor.constraint(equalToSystemSpacingBelow: button.bottomAnchor, multiplier: 2),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            emptyListLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyListLabel.topAnchor.constraint(equalToSystemSpacingBelow: button.bottomAnchor, multiplier: 8)
             
         ])
         
     }
+}
+
+// MARK: - SET UP TABLE VIEW
+
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(AccountListCell.self, forCellReuseIdentifier: AccountListCell.reusedID)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: AccountListCell.reusedID, for: indexPath) as! AccountListCell
+        let account = data[indexPath.row]
+        cell.configure(with: account)
+        return cell
+    }
+}
+
+extension HomeViewController {
     
     // MARK: - LOAD DATA
     
     private func loadData() {
         let result = coreData.getAccounts()
         
-        data = result
+        if !result.isEmpty {
+            data = result
+            tableView.reloadData()
+            emptyListLabel.isHidden = true
+        }
+        
         
     }
+     
     
     // MARK: - ACTIONS
     

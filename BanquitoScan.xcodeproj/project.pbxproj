@@ -15,6 +15,7 @@
 		EB437B532D7C790C003D0298 /* RutValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B522D7C790C003D0298 /* RutValidatorTest.swift */; };
 		EB437B562D7C9D83003D0298 /* AccountsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB437B542D7C9D83003D0298 /* AccountsData.xcdatamodeld */; };
 		EB437B7C2D7CB2A6003D0298 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B7B2D7CB2A6003D0298 /* CoreDataManager.swift */; };
+		EB437B832D7CCB92003D0298 /* AccountListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B822D7CCB92003D0298 /* AccountListCell.swift */; };
 		EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173A72D4456FC00824C77 /* AppDelegate.swift */; };
 		EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B02D4456FD00824C77 /* Assets.xcassets */; };
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
@@ -42,6 +43,7 @@
 		EB437B522D7C790C003D0298 /* RutValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutValidatorTest.swift; sourceTree = "<group>"; };
 		EB437B552D7C9D83003D0298 /* AccountsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccountsData.xcdatamodel; sourceTree = "<group>"; };
 		EB437B7B2D7CB2A6003D0298 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		EB437B822D7CCB92003D0298 /* AccountListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListCell.swift; sourceTree = "<group>"; };
 		EB6173A42D4456FC00824C77 /* BanquitoScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanquitoScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6173A72D4456FC00824C77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6173B02D4456FD00824C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		EB437B7D2D7CC536003D0298 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB437B822D7CCB92003D0298 /* AccountListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		EB61739B2D4456FC00824C77 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 		EB6173A62D4456FC00824C77 /* BanquitoScan */ = {
 			isa = PBXGroup;
 			children = (
+				EB437B7D2D7CC536003D0298 /* Views */,
 				EB437B7A2D7CB28C003D0298 /* Managers */,
 				EB437B402D7139B9003D0298 /* Extentions */,
 				EB6173CE2D454E3B00824C77 /* Utils */,
@@ -278,6 +289,7 @@
 				EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */,
 				EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */,
 				EB437B3D2D673948003D0298 /* RutValidator.swift in Sources */,
+				EB437B832D7CCB92003D0298 /* AccountListCell.swift in Sources */,
 				EB437B3F2D6DCFBB003D0298 /* BankAccount.swift in Sources */,
 				EB437B7C2D7CB2A6003D0298 /* CoreDataManager.swift in Sources */,
 				EB437B3B2D673689003D0298 /* ValidateAndParseBankData.swift in Sources */,

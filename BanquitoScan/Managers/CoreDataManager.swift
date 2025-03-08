@@ -40,6 +40,7 @@ final class CoreDataManager {
         let account = Account(context: CoreDataManager.shared.context)
         
         account.name = accountInfo.name
+        account.bank = accountInfo.bank
         account.rut = accountInfo.rut
         account.email = accountInfo.email
         account.accountType = accountInfo.accountType
