@@ -121,9 +121,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let account = data[indexPath.row]
         
-        let accountInfo = BankAccountInfo(name: account.name, rut: account.rut ?? "", accountType: account.accountType ?? "", accountNumber: account.accountNumber!, bank: account.bank ?? "", email: account.email).formattedInfo()
+        let accountInfo = BankAccountInfo(name: account.name, 
+                                          rut: account.rut ?? "",
+                                          accountType: account.accountType ?? "",
+                                          accountNumber: account.accountNumber!,
+                                          bank: account.bank ?? "",
+                                          email: account.email).formattedInfo()
         
-        UIPasteboard.general.string = accountInfo
+        copyInClipboard(string: accountInfo)
         showToast(message: "Datos copiados", type: .success)
         
         tableView.deselectRow(at: indexPath, animated: true)
