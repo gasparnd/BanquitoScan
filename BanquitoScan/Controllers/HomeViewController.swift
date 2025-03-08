@@ -129,6 +129,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                                           email: account.email).formattedInfo()
         
         copyInClipboard(string: accountInfo)
+        triggerHapticFeedback(type: .success)
         showToast(message: "Datos copiados", type: .success)
         
         tableView.deselectRow(at: indexPath, animated: true)
