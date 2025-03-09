@@ -18,6 +18,7 @@
 		EB437B832D7CCB92003D0298 /* AccountListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B822D7CCB92003D0298 /* AccountListCell.swift */; };
 		EB437B852D7CF036003D0298 /* CopyInClipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B842D7CF036003D0298 /* CopyInClipboard.swift */; };
 		EB437B892D7CF3C0003D0298 /* HapticsFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B882D7CF3C0003D0298 /* HapticsFeedback.swift */; };
+		EB437B8D2D7D08B4003D0298 /* AccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB437B8C2D7D08B4003D0298 /* AccountInfoView.swift */; };
 		EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173A72D4456FC00824C77 /* AppDelegate.swift */; };
 		EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B02D4456FD00824C77 /* Assets.xcassets */; };
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
@@ -48,6 +49,7 @@
 		EB437B822D7CCB92003D0298 /* AccountListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListCell.swift; sourceTree = "<group>"; };
 		EB437B842D7CF036003D0298 /* CopyInClipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyInClipboard.swift; sourceTree = "<group>"; };
 		EB437B882D7CF3C0003D0298 /* HapticsFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsFeedback.swift; sourceTree = "<group>"; };
+		EB437B8C2D7D08B4003D0298 /* AccountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoView.swift; sourceTree = "<group>"; };
 		EB6173A42D4456FC00824C77 /* BanquitoScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanquitoScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6173A72D4456FC00824C77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB6173B02D4456FD00824C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				EB437B822D7CCB92003D0298 /* AccountListCell.swift */,
+				EB437B8C2D7D08B4003D0298 /* AccountInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				EB437B562D7C9D83003D0298 /* AccountsData.xcdatamodeld in Sources */,
 				EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */,
 				EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */,
+				EB437B8D2D7D08B4003D0298 /* AccountInfoView.swift in Sources */,
 				EB437B3D2D673948003D0298 /* RutValidator.swift in Sources */,
 				EB437B832D7CCB92003D0298 /* AccountListCell.swift in Sources */,
 				EB437B3F2D6DCFBB003D0298 /* BankAccount.swift in Sources */,

@@ -19,14 +19,7 @@ class DetailsViewController: UIViewController {
     private let imageView = UIImageView()
     private var image = UIImage()
     
-    private let infoView = UIStackView()
-    
-    private let nameLabel = UILabel()
-    private let rutLabel = UILabel()
-    private let emailLabel = UILabel()
-    private let accountTye = UILabel()
-    private let accountNumer = UILabel()
-    private let accountBank = UILabel()
+    private let accountInfoView = AccountInfoView()
     
     private let button: UIButton =  {
         let button = UIButton(type: .system)
@@ -62,25 +55,9 @@ class DetailsViewController: UIViewController {
         view.addSubview(loader)
         
         // Labels
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        rutLabel.translatesAutoresizingMaskIntoConstraints = false
-        emailLabel.translatesAutoresizingMaskIntoConstraints = false
-        accountTye.translatesAutoresizingMaskIntoConstraints = false
-        accountNumer.translatesAutoresizingMaskIntoConstraints = false
-        accountBank.translatesAutoresizingMaskIntoConstraints = false
-        
-        infoView.translatesAutoresizingMaskIntoConstraints = false
-        infoView.axis = .vertical
-        infoView.spacing = 4
-        
-        infoView.addArrangedSubview(nameLabel)
-        infoView.addArrangedSubview(rutLabel)
-        infoView.addArrangedSubview(accountTye)
-        infoView.addArrangedSubview(accountNumer)
-        infoView.addArrangedSubview(accountBank)
-        infoView.isHidden = true
-        
-        view.addSubview(infoView)
+        accountInfoView.translatesAutoresizingMaskIntoConstraints = false
+        accountInfoView.isHidden = true
+        view.addSubview(accountInfoView)
         
         // Copy Button
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -96,9 +73,9 @@ class DetailsViewController: UIViewController {
             imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 4),
             loader.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 4),
             loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            infoView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 4),
-            infoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.topAnchor.constraint(equalToSystemSpacingBelow: infoView.bottomAnchor, multiplier: 3),
+            accountInfoView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 3),
+            accountInfoView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
+            button.topAnchor.constraint(equalToSystemSpacingBelow: accountInfoView.bottomAnchor, multiplier: 3),
             button.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
             button.heightAnchor.constraint(equalToConstant: 40),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: button.trailingAnchor, multiplier: 4)
@@ -106,44 +83,32 @@ class DetailsViewController: UIViewController {
     }
     
     func startLoading() {
-        infoView.isHidden = true
+        accountInfoView.isHidden = true
         loader.startAnimating()
     }
     
     func stopLoading() {
         loader.stopAnimating()
-        infoView.isHidden = false
+        accountInfoView.isHidden = false
     }
     
     private func updateUI(_ info: BankAccountInfo?) {
         guard let accountData = info else {
             stopLoading()
-            let alert = UIAlertController(title: "Lo sentimos", message: "No se a podido escanear correctamente los datos de la imagen", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Entendido", style: .default, handler: { _ in
+            let alert = UIAlertController(title: "Lo sentimos", message: "No se pudo extraer la información de la imagen. Intenta nuevamente con una imagen más clara y bien iluminada.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { _ in
                 self.navigationController?.popViewController(animated: true)
             }))
             present(alert, animated: true)
             return
         }
-        var name = ""
-        var email = ""
         
-        
-        if let nameVale = accountData.name {
-            name = "Nombre: \(nameVale)"
-        }
-        if let emailVale = accountData.email {
-            email = "Email: \(emailVale)"
-        }
         
         bankAccountInfo = accountData
-        nameLabel.text = name
-        rutLabel.text = "RUT: \(accountData.rut)"
-        emailLabel.text = email
-        accountTye.text = "Tipo: \(accountData.accountType)"
-        accountNumer.text = "Cuenta: \(accountData.accountNumber)"
-        accountBank.text = "Banco: \(accountData.bank)"
+        accountInfoView.configure(with: accountData)
+        
         stopLoading()
+        
         button.isHidden = false
     }
     
