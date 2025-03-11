@@ -26,6 +26,7 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         title = "Detalles"
         navigationItem.largeTitleDisplayMode = .never
+        buttonsView.toast = self
         startLoading()
         style()
     }

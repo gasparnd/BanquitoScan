@@ -10,6 +10,7 @@ import UIKit
 class ActionButtonsView: UIView {
     
     let coreData: CoreDataManager = CoreDataManager.shared
+    weak var toast: ToastDelegate?
     
     var accountInfo: BankAccountInfo?
     
@@ -125,15 +126,17 @@ extension ActionButtonsView {
     @objc func didTapCopyButton() {
         copyInClipboard(string: accountInfo!.formattedInfo())
         triggerHapticFeedback(type: .success)
+        toast?.didShowToast(message: "Datos copiados", type: .success)
     }
     
     @objc func didTapSaveButton() {
         coreData.crearAccount(with: accountInfo!)
         triggerHapticFeedback(type: .warning)
+        toast?.didShowToast(message: "Cuenta guardada", type: .success)
     }
     
     @objc func didTapShareButton() {
         
     }
-   
+    
 }

@@ -13,6 +13,11 @@ enum ToastTypes: String {
     case normal
 }
 
+protocol ToastDelegate: AnyObject {
+    func didShowToast(message: String, type: ToastTypes)
+    
+}
+
 extension UIViewController {
     func showToast(message: String, type: ToastTypes) {
         var color: UIColor?
@@ -37,7 +42,7 @@ extension UIViewController {
         toastView.translatesAutoresizingMaskIntoConstraints = false
         
         
-
+        
         let label = UILabel()
         label.text = message
         label.textColor = textColor
@@ -76,5 +81,11 @@ extension UIViewController {
                 toastView.removeFromSuperview()
             }
         }
+    }
+}
+
+extension UIViewController: ToastDelegate {
+    func didShowToast(message: String, type: ToastTypes) {
+        self.showToast(message: message, type: type)
     }
 }
