@@ -25,13 +25,13 @@ extension UIViewController {
         
         switch type {
         case .success:
-            color = UIColor.systemGreen.withAlphaComponent(0.8)
+            color = UIColor.systemGreen
             textColor = .white
         case .error:
-            color = UIColor.systemRed.withAlphaComponent(0.8)
+            color = UIColor.systemRed
             textColor = .white
         default:
-            color = UIColor.systemGray.withAlphaComponent(0.8)
+            color = UIColor.systemGray
             textColor = .black
         }
         
