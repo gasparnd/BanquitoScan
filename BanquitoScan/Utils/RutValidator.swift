@@ -5,10 +5,28 @@ enum RutError: Error {
     case invalidDigit(message: String)
 }
 
-class RutValidator {
+final class RutValidator {
     
-    func validate(_ rut: String) -> String? {
+    static let shared: RutValidator = RutValidator()
+    
+    func validate(_ string: String) -> String? {
         
+        let rut = separateRut(rut: string)
+        
+        guard let rutData = rut else {
+            return nil
+        }
+        
+        // 5️⃣ Comparar dígito verificador calculado
+        if getVerifyDigit(rutData.0) == rutData.1 {
+            let rutFormateado = formatRut(rut: "\(rutData.0)", dv: rutData.1)
+            return rutFormateado
+        } else {
+            return nil
+        }
+    }
+    
+    func separateRut(rut: String) -> (Int, String)? {
         // 1️⃣ Eliminar puntos y guion del RUT
         var cleanedRut = rut.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "-", with: "")
         cleanedRut = cleanedRut.uppercased().trimmingCharacters(in: .whitespacesAndNewlines)
@@ -31,13 +49,8 @@ class RutValidator {
             return nil
         }
         
-        // 5️⃣ Comparar dígito verificador calculado
-        if getVerifyDigit(rutNumero) == dvIngresado {
-            let rutFormateado = formatRut(rut: rutBase, dv: dvIngresado)
-            return rutFormateado
-        } else {
-            return nil
-        }
+        return (rutNumero, dvIngresado)
+
     }
     
      func getVerifyDigit(_ rut: Int) -> String {

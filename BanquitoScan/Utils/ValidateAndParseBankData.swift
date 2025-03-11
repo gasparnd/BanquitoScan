@@ -7,8 +7,9 @@
 
 import Foundation
 
-class ValidateAndParseBankData {
-    let rutValidator = RutValidator()
+final class ValidateAndParseBankData {
+    let rutValidator = RutValidator.shared
+    static let shared: ValidateAndParseBankData = ValidateAndParseBankData()
     
     private let validBanks: [String: String] = [
         "banco bice": "Banco BICE",
@@ -54,9 +55,13 @@ class ValidateAndParseBankData {
     private func normalizeText(_ text: String) -> String {
         let withoutAccents = text.folding(options: .diacriticInsensitive, locale: .current)
             .lowercased()
+            .replacingOccurrences(of: "-", with: "")
+            .replacingOccurrences(of: "transferencias", with: "")
+            .replacingOccurrences(of: "transferencia cancaria", with: "")
+            .replacingOccurrences(of: "transferencia", with: "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
-      
+        print("withoutAccents: \(withoutAccents)")
         return withoutAccents
         
     }

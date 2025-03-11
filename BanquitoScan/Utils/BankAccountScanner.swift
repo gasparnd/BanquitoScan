@@ -9,8 +9,8 @@ import UIKit
 import Vision
 
 class BankAccountScanner {
-    let validator = ValidateAndParseBankData()
-    let rutValidator = RutValidator()
+    let validator = ValidateAndParseBankData.shared
+    let rutValidator = RutValidator.shared
     
     func extractBankAccountInfo(from image: UIImage, completion: @escaping (BankAccountInfo?) -> Void) {
         guard let cgImage = image.cgImage else {
@@ -71,15 +71,25 @@ class BankAccountScanner {
                 bank = formatedBank
             } else  {
                 print("It is name")
-                name = "\(name) \(line.trimmingCharacters(in: .whitespaces))"
+                name = "\(name) \(line.trimmingCharacters(in: .whitespaces).lowercased().capitalized)"
             }
             print("End")
         }
         
-        if accountType == "Cuenta Rut" && !accountNumber.isEmpty {
-            let number = Int(accountNumber) ?? 0
-            let verifyDigit = rutValidator.getVerifyDigit(number)
-            rut = rutValidator.formatRut(rut: accountNumber, dv: verifyDigit)
+        if accountType == "Cuenta Rut"  {
+            if !accountNumber.isEmpty {
+                let number = Int(accountNumber) ?? 0
+                let verifyDigit = rutValidator.getVerifyDigit(number)
+                rut = rutValidator.formatRut(rut: accountNumber, dv: verifyDigit)
+            } else if !rut.isEmpty {
+                let separatedRut = rutValidator.separateRut(rut: rut)
+                
+                guard let rutData = separatedRut else {
+                    return nil
+                }
+                accountNumber = "\(rutData.0)"
+            }
+            
         }
         
         if rut.isEmpty || accountType.isEmpty || accountNumber.isEmpty  || bank.isEmpty {
