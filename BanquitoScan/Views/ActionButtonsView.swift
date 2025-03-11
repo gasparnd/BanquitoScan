@@ -136,7 +136,21 @@ extension ActionButtonsView {
     }
     
     @objc func didTapShareButton() {
+        let textToShare = accountInfo!.formattedInfo()
         
+        let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+        
+        // For iPad compatibility (prevents crash)
+        if let popoverController = activityVC.popoverPresentationController {
+            popoverController.sourceView = self
+            popoverController.sourceRect = CGRect(x: self.bounds.midX, y: self.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        // Present the share sheet
+        if let viewController = self.window?.rootViewController {
+            viewController.present(activityVC, animated: true, completion: nil)
+        }
     }
     
 }
