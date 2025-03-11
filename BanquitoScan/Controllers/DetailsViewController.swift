@@ -20,17 +20,7 @@ class DetailsViewController: UIViewController {
     private var image = UIImage()
     
     private let accountInfoView = AccountInfoView()
-    
-    private let button: UIButton =  {
-        let button = UIButton(type: .system)
-        
-        button.backgroundColor = .accent
-        button.layer.cornerRadius = 8
-        button.setTitle("Copiar", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        
-        return button
-    }()
+    private let buttonsView = ActionButtonsView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,12 +49,10 @@ class DetailsViewController: UIViewController {
         accountInfoView.isHidden = true
         view.addSubview(accountInfoView)
         
-        // Copy Button
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        button.isHidden = true
+        // Buttons
+        buttonsView.isHidden = true
         
-        view.addSubview(button)
+        view.addSubview(buttonsView)
         
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 270),
@@ -75,10 +63,9 @@ class DetailsViewController: UIViewController {
             loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             accountInfoView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 3),
             accountInfoView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
-            button.topAnchor.constraint(equalToSystemSpacingBelow: accountInfoView.bottomAnchor, multiplier: 3),
-            button.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
-            button.heightAnchor.constraint(equalToConstant: 40),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: button.trailingAnchor, multiplier: 4)
+            buttonsView.topAnchor.constraint(equalToSystemSpacingBelow: accountInfoView.bottomAnchor, multiplier: 3),
+            buttonsView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: buttonsView.trailingAnchor, multiplier: 3)
         ])
     }
     
@@ -90,6 +77,7 @@ class DetailsViewController: UIViewController {
     func stopLoading() {
         loader.stopAnimating()
         accountInfoView.isHidden = false
+        buttonsView.isHidden = false
     }
     
     private func updateUI(_ info: BankAccountInfo?) {
@@ -105,26 +93,14 @@ class DetailsViewController: UIViewController {
         
         
         bankAccountInfo = accountData
+        buttonsView.configure(with: accountData)
         accountInfoView.configure(with: accountData)
         
         stopLoading()
-        
-        button.isHidden = false
     }
     
 }
 
-// MARK: - ACTIONS
-
-extension DetailsViewController {
-    @objc func didTapButton() {
-        let info = bankAccountInfo?.formattedInfo()
-        UIPasteboard.general.string = info
-        copyInClipboard(string: info!)
-        showToast(message: "Datos copiados", type: .success)
-        coreData.crearAccount(with: bankAccountInfo!)
-    }
-}
 
 // MARK: - Configure View with image
 extension DetailsViewController {
