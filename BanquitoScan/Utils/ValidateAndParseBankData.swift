@@ -57,7 +57,8 @@ final class ValidateAndParseBankData {
             .lowercased()
             .replacingOccurrences(of: "-", with: "")
             .replacingOccurrences(of: "transferencias", with: "")
-            .replacingOccurrences(of: "transferencia cancaria", with: "")
+            .replacingOccurrences(of: "transferencia bancarias", with: "")
+            .replacingOccurrences(of: "bancaria", with: "")
             .replacingOccurrences(of: "transferencia", with: "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
