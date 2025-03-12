@@ -147,8 +147,10 @@ extension ActionButtonsView {
         }
         
         // Present the share sheet
-        if let viewController = self.window?.rootViewController {
-            viewController.present(activityVC, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            if let viewController = self.window?.rootViewController {
+                viewController.present(activityVC, animated: true, completion: nil)
+            }
         }
     }
     
