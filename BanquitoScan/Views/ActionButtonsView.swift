@@ -90,7 +90,8 @@ extension ActionButtonsView {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.spacing = 5
+        stackView.spacing = 8
+        stackView .distribution = .fillEqually
         
         stackView.addArrangedSubview(copyButton)
         stackView.addArrangedSubview(shareButton)
@@ -103,12 +104,10 @@ extension ActionButtonsView {
         NSLayoutConstraint.activate([
             copyButton.topAnchor.constraint(equalTo: topAnchor),
             copyButton.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-            copyButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.45),
             copyButton.heightAnchor.constraint(equalToConstant: 35),
             
             shareButton.topAnchor.constraint(equalTo: topAnchor),
             trailingAnchor.constraint(equalToSystemSpacingAfter: shareButton.trailingAnchor, multiplier: 1),
-            shareButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.45),
             shareButton.heightAnchor.constraint(equalToConstant: 35),
             
             saveButton.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1),
