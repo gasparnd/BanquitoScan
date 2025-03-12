@@ -61,7 +61,6 @@ final class ValidateAndParseBankData {
             .replacingOccurrences(of: "transferencia", with: "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
-        print("withoutAccents: \(withoutAccents)")
         return withoutAccents
         
     }

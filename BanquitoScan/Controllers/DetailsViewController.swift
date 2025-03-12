@@ -72,23 +72,28 @@ class DetailsViewController: UIViewController {
     
     func startLoading() {
         accountInfoView.isHidden = true
+        buttonsView.isHidden = true
         loader.startAnimating()
     }
     
     func stopLoading() {
         loader.stopAnimating()
-        accountInfoView.isHidden = false
-        buttonsView.isHidden = false
     }
     
     private func updateUI(_ info: BankAccountInfo?) {
+        stopLoading()
         guard let accountData = info else {
-            stopLoading()
+            
             let alert = UIAlertController(title: "Lo sentimos", message: "No se pudo extraer la información de la imagen. Intenta nuevamente con una imagen más clara y bien iluminada.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { _ in
                 self.navigationController?.popViewController(animated: true)
             }))
-            present(alert, animated: true)
+            
+            DispatchQueue.main.async {
+                if self.presentedViewController == nil { // Prevent duplicate presentation
+                    self.present(alert, animated: true)
+                }
+            }
             return
         }
         
@@ -98,6 +103,8 @@ class DetailsViewController: UIViewController {
         accountInfoView.configure(with: accountData)
         
         stopLoading()
+        accountInfoView.isHidden = false
+        buttonsView.isHidden = false
     }
     
 }
