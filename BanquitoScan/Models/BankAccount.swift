@@ -21,19 +21,20 @@ struct BankAccountInfo {
         
         
         if let name = name {
-            nameValue = name
+            nameValue = name.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         if let email = email {
-            emailValue = email
+            emailValue = email.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         
         return """
-        \(emailValue)
         \(nameValue)
         \(rut)
         \(accountType)
         \(accountNumber)
         \(bank)
-        """.trimmingCharacters(in: .whitespaces)
+        \(emailValue)
+        """.trimmingCharacters(in: .whitespacesAndNewlines)
+        
     }
 }

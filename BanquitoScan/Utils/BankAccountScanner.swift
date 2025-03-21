@@ -51,12 +51,12 @@ class BankAccountScanner {
         var accountNumber: String = ""
         var bank: String = ""
         var email: String = ""
-
+        
         for line in textLines {
             print("Start: \(line)")
             if line.contains("@") {
                 print("It is email")
-                email = line.trimmingCharacters(in: .whitespaces)
+                email = line.trimmingCharacters(in: .whitespaces).lowercased()
             } else if let formatedAccountType = validator.validateAccountType(line) {
                 print("It is account type")
                 accountType = formatedAccountType
@@ -90,13 +90,20 @@ class BankAccountScanner {
                 accountNumber = "\(rutData.0)"
             }
             
+        } else {
+            let parsedAccountnumber = validator.parseAccountNumer(accountNumber)
+            if let parsedData = parsedAccountnumber {
+                accountNumber = parsedData
+            }
         }
+        
+        
         
         if rut.isEmpty || accountType.isEmpty || accountNumber.isEmpty  || bank.isEmpty {
             return nil
         }
         
         return BankAccountInfo(name: name, rut: rut, accountType: accountType, accountNumber: accountNumber, bank: bank, email: email)
-
+        
     }
 }

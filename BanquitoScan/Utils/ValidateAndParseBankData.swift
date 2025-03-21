@@ -87,7 +87,7 @@ final class ValidateAndParseBankData {
     
     func validateRut(_ input: String) -> String? {
         let normalizedinput = normalizeText(input).replacingOccurrences(of: "rut:", with: "").replacingOccurrences(of: "=", with: "")
-           
+        
         let rut = rutValidator.validate(normalizedinput)
         return rut
         
@@ -125,7 +125,7 @@ final class ValidateAndParseBankData {
         let cleanedText = wordsToRemove.reduce(normalizedInput) { result, word in
             result.replacingOccurrences(of: word, with: "")
         }
-           
+        
         
         let regexPatternForCleanString = "[-_.]"
         let cleanedString = cleanedText.lowercased().replacingOccurrences(of: " ", with: "")
@@ -138,5 +138,23 @@ final class ValidateAndParseBankData {
         }
         
         return nil
+    }
+    
+    func parseAccountNumer(_ input: String) -> String? {
+        guard let reversedAccount = validateAccountnumber(input) else { return nil }
+        let accountNumber = String(reversedAccount.reversed())
+        var formatedAccountNumber = accountNumber
+        
+        let idxs = [1, 7, 10, 14]
+        
+        for (offset, position) in idxs.enumerated() {
+            let adjustedIndex = position + offset
+            if let index = formatedAccountNumber.index(formatedAccountNumber.startIndex, offsetBy: adjustedIndex, limitedBy: formatedAccountNumber.endIndex) {
+                formatedAccountNumber = formatedAccountNumber[..<index] + " " + formatedAccountNumber[index...]
+            }
+        }
+        
+        return String(formatedAccountNumber.reversed())
+        
     }
 }
