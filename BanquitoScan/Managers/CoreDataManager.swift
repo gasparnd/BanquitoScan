@@ -36,17 +36,33 @@ final class CoreDataManager {
         }
     }
     
-    func crearAccount(with accountInfo: BankAccountInfo) {
-        let account = Account(context: CoreDataManager.shared.context)
+    func crearAccount(with accountInfo: BankAccountInfo) -> Account? {
+        let fetchRequest: NSFetchRequest<Account> = Account.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "rut == [c] %@ AND bank == [c] %@", accountInfo.rut, accountInfo.bank)
         
-        account.name = accountInfo.name
-        account.bank = accountInfo.bank
-        account.rut = accountInfo.rut
-        account.email = accountInfo.email
-        account.accountType = accountInfo.accountType
-        account.accountNumber = accountInfo.accountNumber
+        do {
+            let accountExist = try context.fetch(fetchRequest)
+
+            if accountExist.isEmpty == false {
+                return nil
+            } else {
+                let account = Account(context: CoreDataManager.shared.context)
+                account.name = accountInfo.name
+                account.bank = accountInfo.bank
+                account.rut = accountInfo.rut
+                account.email = accountInfo.email
+                account.accountType = accountInfo.accountType
+                account.accountNumber = accountInfo.accountNumber
+                
+                saveContext()
+                return account
+            }
+            
+        } catch {
+            print("Error al obtener cuentas: \(error.localizedDescription)")
+            return nil
+        }
         
-        saveContext()
     }
     
     func getAccounts() -> [Account] {

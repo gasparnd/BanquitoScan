@@ -9,10 +9,10 @@ import UIKit
 
 class ActionButtonsView: UIView {
     
-    let coreData: CoreDataManager = CoreDataManager.shared
+    private let coreData: CoreDataManager = CoreDataManager.shared
     weak var toast: ToastDelegate?
     
-    var accountInfo: BankAccountInfo?
+    private var accountInfo: BankAccountInfo?
     
     private let saveButton: UIButton =  {
         let button = UIButton(type: .system)
@@ -129,9 +129,15 @@ extension ActionButtonsView {
     }
     
     @objc func didTapSaveButton() {
-        coreData.crearAccount(with: accountInfo!)
-        triggerHapticFeedback(type: .warning)
-        toast?.didShowToast(message: "Cuenta guardada", type: .success)
+        let savedAccount = coreData.crearAccount(with: accountInfo!)
+        
+        if savedAccount != nil {
+            triggerHapticFeedback(type: .warning)
+            toast?.didShowToast(message: "Cuenta guardada", type: .success)
+        } else {
+            triggerHapticFeedback(type: .error)
+            toast?.didShowToast(message: "La cuenta existe", type: .error)
+        }
     }
     
     @objc func didTapShareButton() {
