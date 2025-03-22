@@ -26,6 +26,7 @@ class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UIN
         
         return button
     }()
+    private let buttonView = UIView()
     
     private let emptyListLabel: UILabel = {
         let label = UILabel()
@@ -39,7 +40,7 @@ class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
-        title = "Inicio"
+        title = "Banquito Scan"
         
         setupTableView()
         style()
@@ -55,9 +56,6 @@ class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UIN
         stackView.axis = .vertical
         stackView.spacing = 20
         
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        
         emptyListLabel.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,24 +63,44 @@ class HomeViewController: UIViewController ,UIImagePickerControllerDelegate, UIN
     
     private func layout() {
         
-        view.addSubview(button)
         view.addSubview(tableView)
         view.addSubview(emptyListLabel)
         
         NSLayoutConstraint.activate([
-            button.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: button.trailingAnchor, multiplier: 2),
-            button.heightAnchor.constraint(equalToConstant: 40),
-            button.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 3),
-            tableView.topAnchor.constraint(equalToSystemSpacingBelow: button.bottomAnchor, multiplier: 2),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            emptyListLabel.topAnchor.constraint(equalToSystemSpacingBelow: tableView.bottomAnchor, multiplier: 3),
             emptyListLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptyListLabel.topAnchor.constraint(equalToSystemSpacingBelow: button.bottomAnchor, multiplier: 8)
             
         ])
         
+    }
+    
+    private func createTableHeader() -> UIView {
+        let container = UIView()
+        container.backgroundColor = .clear
+        
+        let button = UIButton(type: .system)
+        button.backgroundColor = .accent
+        button.layer.cornerRadius = 10
+        button.setTitle("Agregar nuevo", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        
+        container.addSubview(button)
+        
+        NSLayoutConstraint.activate([
+            button.leadingAnchor.constraint(equalToSystemSpacingAfter: container.leadingAnchor, multiplier: 2),
+            container.trailingAnchor.constraint(equalToSystemSpacingAfter: button.trailingAnchor, multiplier: 2),
+            button.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
+            button.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10),
+            button.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        return container
     }
 }
 
@@ -94,6 +112,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(AccountListCell.self, forCellReuseIdentifier: AccountListCell.reusedID)
+        
+        let header = createTableHeader()
+        let screenWidth = view.bounds.width
+        let headerHeight: CGFloat = 70
+        header.frame = CGRect(x: 0, y: 0, width: screenWidth, height: headerHeight)
+        
+        tableView.tableHeaderView = header
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,7 +146,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let account = data[indexPath.row]
         
-        let accountInfo = BankAccountInfo(name: account.name, 
+        let accountInfo = BankAccountInfo(name: account.name,
                                           rut: account.rut ?? "",
                                           accountType: account.accountType ?? "",
                                           accountNumber: account.accountNumber!,
@@ -212,5 +237,3 @@ extension HomeViewController {
         picker.dismiss(animated: true)
     }
 }
-
-
