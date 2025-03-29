@@ -136,7 +136,7 @@ extension ActionButtonsView {
             toast?.didShowToast(message: "Cuenta guardada", type: .success)
         } else {
             triggerHapticFeedback(type: .error)
-            toast?.didShowToast(message: "La cuenta existe", type: .error)
+            toast?.didShowToast(message: "La cuenta ya existe", type: .error)
         }
     }
     
