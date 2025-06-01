@@ -53,7 +53,7 @@ final class AccountListCell: UITableViewCell {
         
     }
     
-    func configure(with account: Account) {
+    func configure(with account: AccountEntity) {
         nameLabel.text = account.name
         bankLabel.text = account.bank
     }

@@ -16,7 +16,8 @@ final class ListOfAccountsRouter {
     var listOfAccountsViewController: ListOfAccountsView?
     
     func showListOfAccounts(window: UIWindow?) {
-        let interactor = ListOfAccountsInteractor(databaseManeger: CoreDataManager.shared)
+//        let interactor = ListOfAccountsInteractor(databaseManeger: CoreDataManager.shared)
+        let interactor = MockListOfAccountsInteractor()
         let presenter = ListOfAccountsPresenter(interactor: interactor)
         listOfAccountsViewController = ListOfAccountsView(presenter: presenter)
         presenter.ui = listOfAccountsViewController

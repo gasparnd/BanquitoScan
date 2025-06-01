@@ -69,6 +69,7 @@
 				HomeViewController.swift,
 				Interactors/ListOfAccountsInteractor.swift,
 				Interactors/ListOfAccountsInteractorProtocol.swift,
+				Interactors/MockListOfAccountsInteractor.swift,
 				ListOfAccountsRouter.swift,
 				ListOfAccountsView.swift,
 				Presenters/ListOfAccountsPresenter.swift,
