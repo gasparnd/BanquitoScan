@@ -23,7 +23,6 @@
 		EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173A72D4456FC00824C77 /* AppDelegate.swift */; };
 		EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B02D4456FD00824C77 /* Assets.xcassets */; };
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
-		EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173C12D445AA300824C77 /* HomeViewController.swift */; };
 		EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173D12D45720E00824C77 /* BankAccountScanner.swift */; };
 		EBFF5C392DECDBC400CBFDE7 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF5C382DECDBC400CBFDE7 /* DatabaseProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -58,7 +57,6 @@
 		EB6173B02D4456FD00824C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB6173B32D4456FD00824C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB6173B52D4456FD00824C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB6173C12D445AA300824C77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EB6173D12D45720E00824C77 /* BankAccountScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountScanner.swift; sourceTree = "<group>"; };
 		EBFF5C382DECDBC400CBFDE7 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,9 +66,13 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Entities/AccountEntity.swift,
-				ListOfAccountsInteractor.swift,
-				ListOfAccountsInteractorProtocol.swift,
-				ListOfAccountsPresenterProtocol.swift,
+				HomeViewController.swift,
+				Interactors/ListOfAccountsInteractor.swift,
+				Interactors/ListOfAccountsInteractorProtocol.swift,
+				ListOfAccountsRouter.swift,
+				ListOfAccountsView.swift,
+				Presenters/ListOfAccountsPresenter.swift,
+				Presenters/ListOfAccountsPresenterProtocol.swift,
 			);
 			target = EB6173A32D4456FC00824C77 /* BanquitoScan */;
 		};
@@ -181,7 +183,6 @@
 		EB6173BC2D44586700824C77 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EB6173C12D445AA300824C77 /* HomeViewController.swift */,
 				EB437B342D65F381003D0298 /* DetailsViewController.swift */,
 			);
 			path = Controllers;
@@ -322,7 +323,6 @@
 				EBFF5C392DECDBC400CBFDE7 /* DatabaseProtocol.swift in Sources */,
 				EB437B562D7C9D83003D0298 /* AccountsData.xcdatamodeld in Sources */,
 				EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */,
-				EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */,
 				EB437B8D2D7D08B4003D0298 /* AccountInfoView.swift in Sources */,
 				EB437B3D2D673948003D0298 /* RutValidator.swift in Sources */,
 				EB437B832D7CCB92003D0298 /* AccountListCell.swift in Sources */,

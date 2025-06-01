@@ -25,7 +25,7 @@ final class ListOfAccountsPresenter: ListOfAccountsPresentable {
     }
      
     func onTapCell(at index: Int) {
-        <#code#>
+        
     }
     
     

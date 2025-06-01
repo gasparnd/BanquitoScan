@@ -13,17 +13,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     var window: UIWindow?
+    var listOfAccountsRouter = ListOfAccountsRouter()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.backgroundColor = .systemBackground
-        
-        let vc = HomeViewController()
-        let navController = UINavigationController(rootViewController: vc)
-        navController.navigationBar.prefersLargeTitles = true
-        vc.navigationItem.largeTitleDisplayMode = .always
-        window?.rootViewController = navController
+        listOfAccountsRouter.showListOfAccounts(window: window)
+//        window?.makeKeyAndVisible()
+//        window?.backgroundColor = .systemBackground
+//        
+//        let vc = HomeViewController()
+//        let navController = UINavigationController(rootViewController: vc)
+//        navController.navigationBar.prefersLargeTitles = true
+//        vc.navigationItem.largeTitleDisplayMode = .always
+//        window?.rootViewController = navController
         
         return true
     }
