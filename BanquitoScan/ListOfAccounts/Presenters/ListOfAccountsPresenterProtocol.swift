@@ -16,4 +16,5 @@ protocol ListOfAccountsPresentable: AnyObject {
     func onViewAppear()
     func onTapCell(at index: Int)
     func onRemoveCell(at index: Int)
+    func scanNewAccount(image: Any)
 }

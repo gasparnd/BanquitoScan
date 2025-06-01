@@ -66,7 +66,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Entities/AccountEntity.swift,
-				HomeViewController.swift,
 				Interactors/ListOfAccountsInteractor.swift,
 				Interactors/ListOfAccountsInteractorProtocol.swift,
 				Interactors/MockListOfAccountsInteractor.swift,

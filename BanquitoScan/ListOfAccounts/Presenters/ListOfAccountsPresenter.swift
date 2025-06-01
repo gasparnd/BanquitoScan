@@ -12,9 +12,11 @@ final class ListOfAccountsPresenter: ListOfAccountsPresentable {
     
     var accounts: [AccountEntity] = []
     let interactor: ListOfAccountsInteractorProtocol
+    let router: ListOfAccountsRouting
     
-    init(interactor: ListOfAccountsInteractorProtocol) {
+    init(interactor: ListOfAccountsInteractorProtocol, router: ListOfAccountsRouting) {
         self.interactor = interactor
+        self.router = router
     }
     
     func onViewAppear() {
@@ -41,5 +43,9 @@ final class ListOfAccountsPresenter: ListOfAccountsPresentable {
             }
             
         }
+    }
+    
+    func scanNewAccount(image: Any) {
+        router.scanNewAccount(image: image)
     }
 }

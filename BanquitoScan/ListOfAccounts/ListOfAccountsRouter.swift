@@ -9,20 +9,24 @@ import Foundation
 import UIKit
 
 protocol ListOfAccountsRouting: AnyObject {
-    func scanNewAccount() -> Void
+    func scanNewAccount(image: Any) -> Void
 }
 
-final class ListOfAccountsRouter {
+final class ListOfAccountsRouter: ListOfAccountsRouting {
     var listOfAccountsViewController: ListOfAccountsView?
     
     func showListOfAccounts(window: UIWindow?) {
 //        let interactor = ListOfAccountsInteractor(databaseManeger: CoreDataManager.shared)
         let interactor = MockListOfAccountsInteractor()
-        let presenter = ListOfAccountsPresenter(interactor: interactor)
+        let presenter = ListOfAccountsPresenter(interactor: interactor, router: self)
         listOfAccountsViewController = ListOfAccountsView(presenter: presenter)
         presenter.ui = listOfAccountsViewController
         
         window?.rootViewController = listOfAccountsViewController
         window?.makeKeyAndVisible()
+    }
+    
+    func scanNewAccount(image: Any) {
+        print(image)
     }
 }

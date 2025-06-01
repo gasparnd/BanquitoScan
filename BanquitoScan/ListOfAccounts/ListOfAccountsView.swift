@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class ListOfAccountsView: UIViewController {
+final class ListOfAccountsView: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     private var presenter: ListOfAccountsPresenter
     
     private let tableView = UITableView()
@@ -94,7 +94,7 @@ final class ListOfAccountsView: UIViewController {
         button.setTitle("Agregar nuevo", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        //        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
         container.addSubview(button)
         
@@ -108,6 +108,53 @@ final class ListOfAccountsView: UIViewController {
         
         return container
     }
+    
+    @objc func didTapButton() {
+        let alert = UIAlertController(title: "Seleccionar Imagen", message: "Elige una opción", preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Tomar Foto", style: .default) { _ in
+            self.openImagePicker(sourceType: .camera)
+        }
+        
+        let galleryAction = UIAlertAction(title: "Abrir Galería", style: .default) { _ in
+            self.openImagePicker(sourceType: .photoLibrary)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
+        
+        alert.addAction(cameraAction)
+        alert.addAction(galleryAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
+    
+        // This create the ImagePicker with the selected soruceType (gallery or camera roll)
+        func openImagePicker(sourceType: UIImagePickerController.SourceType) {
+            guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
+                print("El tipo de fuente no está disponible en este dispositivo.")
+                return
+            }
+    
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = sourceType
+            imagePicker.allowsEditing = true
+    
+            present(imagePicker, animated: true)
+        }
+    
+        // MARK: - UIImagePickerControllerDelegate
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            if let selectedImage = info[.editedImage] as? UIImage {
+                picker.dismiss(animated: true)
+                presenter.scanNewAccount(image: selectedImage)
+            } else if let originalImage = info[.originalImage] as? UIImage {
+                picker.dismiss(animated: true)
+                presenter.scanNewAccount(image: originalImage)
+            }
+        }
+    
 }
 
 // MARK: - SET UP TABLE VIEW
