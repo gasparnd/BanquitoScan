@@ -9,4 +9,5 @@ import Foundation
 
 protocol ListOfAccountsInteractorProtocol: AnyObject {
     func getAccounts() async -> [AccountEntity]
+    func removeAccount(account: AccountEntity) async -> Bool
 }

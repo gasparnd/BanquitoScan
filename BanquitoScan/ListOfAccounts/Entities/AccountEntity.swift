@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AccountEntity {
+struct AccountEntity: Equatable {
     let name: String?
     let rut: String
     let accountType: String

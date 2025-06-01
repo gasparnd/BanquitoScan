@@ -28,5 +28,15 @@ final class ListOfAccountsPresenter: ListOfAccountsPresentable {
         
     }
     
-    
+    func onRemoveCell(at index: Int) {
+        Task {
+            let account = accounts[index]
+            let result = await interactor.removeAccount(account: account)
+            if result {
+                accounts.remove(at: index)
+                ui?.update(accounts: accounts)
+            }
+            
+        }
+    }
 }

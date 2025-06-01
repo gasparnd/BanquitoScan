@@ -18,4 +18,9 @@ final class ListOfAccountsInteractor: ListOfAccountsInteractorProtocol  {
         let accounts: [AccountEntity] = await databaseManeger.getAll()
         return accounts
     }
+    
+    func removeAccount(account: AccountEntity) async -> Bool {
+        let results: Bool = await databaseManeger.delete(account: account)
+        return results
+    }
 }

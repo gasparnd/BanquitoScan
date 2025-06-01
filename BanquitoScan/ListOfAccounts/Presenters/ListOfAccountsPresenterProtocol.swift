@@ -15,4 +15,5 @@ protocol ListOfAccountsPresentable: AnyObject {
     var accounts: [AccountEntity] { get }
     func onViewAppear()
     func onTapCell(at index: Int)
+    func onRemoveCell(at index: Int)
 }

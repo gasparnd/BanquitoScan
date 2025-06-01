@@ -94,7 +94,7 @@ final class ListOfAccountsView: UIViewController {
         button.setTitle("Agregar nuevo", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        //        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
         container.addSubview(button)
         
@@ -139,18 +139,26 @@ extension ListOfAccountsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    
+        
+        if editingStyle == .delete {
+            presenter.onRemoveCell(at: indexPath.row)
+            if presenter.accounts.isEmpty {
+                emptyListLabel.isHidden = false
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
     }
 }
 
 
 extension ListOfAccountsView: ListOfAccountsUI {
     func update(accounts: [AccountEntity]) {
-        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     
