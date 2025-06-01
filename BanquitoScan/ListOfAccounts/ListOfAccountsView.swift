@@ -149,7 +149,9 @@ extension ListOfAccountsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        presenter.onTapCell(at: indexPath.row)
+        showToast(message: "Datos copiados", type: .success)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

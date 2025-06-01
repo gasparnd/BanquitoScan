@@ -25,4 +25,27 @@ struct AccountEntity: Equatable, Hashable {
         self.bank = bank
         self.email = email
     }
+    
+    public func formattedInfo() -> String {
+        var nameValue = ""
+        var emailValue = ""
+        
+        
+        if let name = name {
+            nameValue = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        if let email = email {
+            emailValue = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        
+        return """
+        \(nameValue)
+        \(rut)
+        \(accountType)
+        \(accountNumber)
+        \(bank)
+        \(emailValue)
+        """.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+    }
 }

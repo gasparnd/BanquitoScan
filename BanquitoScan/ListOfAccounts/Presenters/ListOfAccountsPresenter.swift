@@ -23,9 +23,12 @@ final class ListOfAccountsPresenter: ListOfAccountsPresentable {
             ui?.update(accounts: accounts)
         }
     }
-     
+    
     func onTapCell(at index: Int) {
-        
+        let account = accounts[index]
+        let accountInfo = account.formattedInfo()
+        copyInClipboard(string: accountInfo)
+        triggerHapticFeedback(type: .success)
     }
     
     func onRemoveCell(at index: Int) {
