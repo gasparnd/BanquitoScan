@@ -5,6 +5,7 @@
         <attribute name="accountType" attributeType="String"/>
         <attribute name="bank" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="rut" attributeType="String"/>
     </entity>

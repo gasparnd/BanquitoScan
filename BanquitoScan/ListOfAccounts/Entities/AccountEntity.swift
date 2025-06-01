@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct AccountEntity: Equatable {
+struct AccountEntity: Equatable, Hashable {
+    let id: UUID
     let name: String?
     let rut: String
     let accountType: String
@@ -15,7 +16,8 @@ struct AccountEntity: Equatable {
     let bank: String
     let email: String?
     
-    public init(name: String?, rut: String, accountType: String, accountNumber: String, bank: String, email: String?) {
+    public init(id: UUID, name: String?, rut: String, accountType: String, accountNumber: String, bank: String, email: String?) {
+        self.id = id
         self.name = name
         self.rut = rut
         self.accountType = accountType

@@ -104,6 +104,7 @@ final class CoreDataManager: DatabaseProtocol {
     func parseAccountEntiy(_ accountEntity: AccountEntity) -> Account {
         var account: Account!
         account = Account(context: context)
+        account.id = accountEntity.id
         account.name = accountEntity.name
         account.bank = accountEntity.bank
         account.rut = accountEntity.rut
@@ -114,6 +115,7 @@ final class CoreDataManager: DatabaseProtocol {
     }
     
     func mapAccountEntity(_ account: Account) -> AccountEntity {
+        let id = account.id ?? UUID()
         let name = account.name ?? ""
         let email = account.email ?? ""
         let rut = account.rut ?? ""
@@ -121,6 +123,6 @@ final class CoreDataManager: DatabaseProtocol {
         let accountNumber = account.accountNumber ?? ""
         let bank = account.bank ?? ""
         
-        return AccountEntity(name: name, rut: rut, accountType: accountType, accountNumber: accountNumber, bank: bank, email: email)
+        return AccountEntity(id: id, name: name, rut: rut, accountType: accountType, accountNumber: accountNumber, bank: bank, email: email)
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 final class MockListOfAccountsInteractor: ListOfAccountsInteractorProtocol {
     private var accounts: [AccountEntity] = [
         AccountEntity(
+            id: UUID(),
             name: "María López",
             rut: "18.456.789-0",
             accountType: "Cuenta Corriente",
@@ -18,14 +19,16 @@ final class MockListOfAccountsInteractor: ListOfAccountsInteractorProtocol {
             email: "maria.lopez@example.com"
         ),
         AccountEntity(
-           name: "Juan Pérez",
-           rut: "20.345.678-5",
-           accountType: "Cuenta RUT",
-           accountNumber: "203456785",
-           bank: "BancoEstado",
-           email: "juan.perez@correo.cl"
-       ),
+            id: UUID(),
+            name: "Juan Pérez",
+            rut: "20.345.678-5",
+            accountType: "Cuenta RUT",
+            accountNumber: "203456785",
+            bank: "BancoEstado",
+            email: "juan.perez@correo.cl"
+        ),
         AccountEntity(
+            id: UUID(),
             name: "Catalina Soto",
             rut: "16.234.567-K",
             accountType: "Cuenta Vista",
@@ -34,6 +37,7 @@ final class MockListOfAccountsInteractor: ListOfAccountsInteractorProtocol {
             email: nil
         ),
         AccountEntity(
+            id: UUID(),
             name: "Felipe González",
             rut: "22.789.123-3",
             accountType: "Cuenta de Ahorro",
@@ -44,7 +48,7 @@ final class MockListOfAccountsInteractor: ListOfAccountsInteractorProtocol {
     ]
     
     func getAccounts() async -> [AccountEntity] {
-      return accounts
+        return accounts
     }
     
     func removeAccount(account: AccountEntity) async -> Bool {
