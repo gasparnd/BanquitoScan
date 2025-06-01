@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
 		EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173C12D445AA300824C77 /* HomeViewController.swift */; };
 		EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173D12D45720E00824C77 /* BankAccountScanner.swift */; };
+		EBFF5C392DECDBC400CBFDE7 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF5C382DECDBC400CBFDE7 /* DatabaseProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +60,25 @@
 		EB6173B52D4456FD00824C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB6173C12D445AA300824C77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EB6173D12D45720E00824C77 /* BankAccountScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountScanner.swift; sourceTree = "<group>"; };
+		EBFF5C382DECDBC400CBFDE7 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EBFF5C302DECD9E400CBFDE7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Entities/AccountEntity.swift,
+				ListOfAccountsInteractor.swift,
+				ListOfAccountsInteractorProtocol.swift,
+				ListOfAccountsPresenterProtocol.swift,
+			);
+			target = EB6173A32D4456FC00824C77 /* BanquitoScan */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		EBFF5C2C2DECD97500CBFDE7 /* ListOfAccounts */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (EBFF5C302DECD9E400CBFDE7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ListOfAccounts; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EB437B442D7C78E6003D0298 /* Frameworks */ = {
@@ -99,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				EB437B7B2D7CB2A6003D0298 /* CoreDataManager.swift */,
+				EBFF5C382DECDBC400CBFDE7 /* DatabaseProtocol.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -135,6 +155,7 @@
 		EB6173A62D4456FC00824C77 /* BanquitoScan */ = {
 			isa = PBXGroup;
 			children = (
+				EBFF5C2C2DECD97500CBFDE7 /* ListOfAccounts */,
 				EB437B7D2D7CC536003D0298 /* Views */,
 				EB437B7A2D7CB28C003D0298 /* Managers */,
 				EB437B402D7139B9003D0298 /* Extentions */,
@@ -298,6 +319,7 @@
 				EB437B422D7139D2003D0298 /* Toast.swift in Sources */,
 				EB437B912D803C9B003D0298 /* ActionButtonsView.swift in Sources */,
 				EB6173A82D4456FC00824C77 /* AppDelegate.swift in Sources */,
+				EBFF5C392DECDBC400CBFDE7 /* DatabaseProtocol.swift in Sources */,
 				EB437B562D7C9D83003D0298 /* AccountsData.xcdatamodeld in Sources */,
 				EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */,
 				EB6173C22D445AA300824C77 /* HomeViewController.swift in Sources */,

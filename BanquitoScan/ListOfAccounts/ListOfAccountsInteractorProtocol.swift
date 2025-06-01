@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol ListOfAccountsInteractorProtocol: AnyObject {
+    func getAccounts() -> [AccountEntity]
+}

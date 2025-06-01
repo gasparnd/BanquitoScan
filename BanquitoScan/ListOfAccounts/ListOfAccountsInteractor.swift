@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+final class ListOfAccountsInteractor: ListOfAccountsInteractorProtocol  {
+    private let databaseManeger: DatabaseProtocol
+    
+    init(databaseManeger: DatabaseProtocol) {
+        self.databaseManeger = databaseManeger
+    }
+    
+    func getAccounts() -> [AccountEntity] {
+        databaseManeger.get()
+    }
+}

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol ListOfAccountsPresentable: AnyObject {
+    var accounts: [Account] { get }
+    func onViewAppear()
+    func onTapCell(at index: Int)
+}
