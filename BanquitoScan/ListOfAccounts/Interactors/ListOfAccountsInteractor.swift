@@ -14,7 +14,8 @@ final class ListOfAccountsInteractor: ListOfAccountsInteractorProtocol  {
         self.databaseManeger = databaseManeger
     }
     
-    func getAccounts() -> [AccountEntity] {
-        databaseManeger.get()
+    func getAccounts() async -> [AccountEntity] {
+        let accounts: [AccountEntity] = await databaseManeger.getAll()
+        return accounts
     }
 }
