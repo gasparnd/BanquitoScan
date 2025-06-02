@@ -1,12 +1,12 @@
+////
+////  DetailsViewController.swift
+////  BanquitoScan
+////
+////  Created by Gaspar Dolcemascolo on 19/02/2025.
+////
 //
-//  DetailsViewController.swift
-//  BanquitoScan
+//import UIKit
 //
-//  Created by Gaspar Dolcemascolo on 19/02/2025.
-//
-
-import UIKit
-
 //class DetailsViewController: UIViewController {
 //    
 //    var bankAccountInfo: BankAccountInfo? = nil
