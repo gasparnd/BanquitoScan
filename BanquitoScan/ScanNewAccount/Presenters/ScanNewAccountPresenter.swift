@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ScanNewAccountUI: AnyObject {
-    func update(witn account: AccountEntity?)
+    func update(with account: AccountEntity?)
 }
 
 final class ScanNewAccountPresenter: ScanNewAccountPresentable {

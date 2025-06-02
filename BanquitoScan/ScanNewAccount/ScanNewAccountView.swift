@@ -93,7 +93,7 @@ final class ScanNewAccountView: UIViewController {
 }
 
 extension ScanNewAccountView: ScanNewAccountUI {
-    func update(witn account: AccountEntity?) {
+    func update(with account: AccountEntity?) {
         DispatchQueue.main.async {
             if let account = account {
                 self.accountInfoView.configure(with: account)
