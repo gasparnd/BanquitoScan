@@ -83,6 +83,8 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		EBA59B1A2DEDB2D00027F524 /* Interactors */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interactors; sourceTree = "<group>"; };
+		EBA59B1B2DEDB2DC0027F524 /* Presenters */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Presenters; sourceTree = "<group>"; };
 		EBFF5C2C2DECD97500CBFDE7 /* ListOfAccounts */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (EBFF5C302DECD9E400CBFDE7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ListOfAccounts; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -216,6 +218,8 @@
 		EBA59B152DED1FC30027F524 /* ScanNewAccount */ = {
 			isa = PBXGroup;
 			children = (
+				EBA59B1B2DEDB2DC0027F524 /* Presenters */,
+				EBA59B1A2DEDB2D00027F524 /* Interactors */,
 				EBA59B162DED1FE40027F524 /* ScanNewAccountRouter.swift */,
 				EBA59B182DED1FF20027F524 /* ScanNewAccountView.swift */,
 			);
@@ -254,6 +258,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				EBA59B1A2DEDB2D00027F524 /* Interactors */,
+				EBA59B1B2DEDB2DC0027F524 /* Presenters */,
 			);
 			name = BanquitoScan;
 			productName = BanquitoScan;
