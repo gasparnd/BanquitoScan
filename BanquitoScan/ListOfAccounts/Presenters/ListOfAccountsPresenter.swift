@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class ListOfAccountsPresenter: ListOfAccountsPresentable {
     weak var ui: ListOfAccountsUI?
@@ -45,7 +46,7 @@ final class ListOfAccountsPresenter: ListOfAccountsPresentable {
         }
     }
     
-    func scanNewAccount(image: Any) {
+    func scanNewAccount(image: UIImage) {
         router.scanNewAccount(image: image)
     }
 }

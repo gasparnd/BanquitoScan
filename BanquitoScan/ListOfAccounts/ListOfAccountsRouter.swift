@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ListOfAccountsRouting: AnyObject {
-    func scanNewAccount(image: Any) -> Void
+    func scanNewAccount(image: UIImage) -> Void
 }
 
 final class ListOfAccountsRouter: ListOfAccountsRouting {
@@ -31,7 +31,7 @@ final class ListOfAccountsRouter: ListOfAccountsRouting {
         window?.makeKeyAndVisible()
     }
     
-    func scanNewAccount(image: Any) {
+    func scanNewAccount(image: UIImage) {
         guard let listOfAccountsViewController, let navigationController else { return }
         
         scanNewAccountRouter = ScanNewAccountRouter()
