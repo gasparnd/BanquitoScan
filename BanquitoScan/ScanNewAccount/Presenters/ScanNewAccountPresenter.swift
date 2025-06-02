@@ -30,19 +30,20 @@ final class ScanNewAccountPresenter: ScanNewAccountPresentable {
                self?.router.goBack()
                return
            }
-           self?.parseeTexts(result)
+           self?.parseTexts(result)
         }
         
         
        
     }
     
-    private func parseeTexts(_ texts: [String])  {
-        let account = interactor.findAccountImage(from: texts)
-        guard let accountEntity = account else {
+    private func parseTexts(_ texts: [String])  {
+        let resposne = interactor.findAccountImage(from: texts)
+        guard let accountEntity = resposne else {
             router.goBack()
             return
         }
+        account = accountEntity
         ui?.update(with: accountEntity)
     }
     

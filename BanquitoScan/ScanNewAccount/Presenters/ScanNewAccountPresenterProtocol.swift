@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol ScanNewAccountPresentable: AnyObject {
+    var account: AccountEntity? { get }
     func getAccountInfo(from: UIImage) -> Void
     func saveAccountInfo(_ account: AccountEntity) async -> Void
 }
