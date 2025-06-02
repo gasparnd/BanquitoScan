@@ -10,6 +10,7 @@ import UIKit
 
 protocol ScanNewAccountRouting: AnyObject {
     func showScanNewAccountView(fromViewController: UIViewController, navigationController: UINavigationController, withImage image: UIImage)
+    func goBack()
 }
 
 final class ScanNewAccountRouter: ScanNewAccountRouting {

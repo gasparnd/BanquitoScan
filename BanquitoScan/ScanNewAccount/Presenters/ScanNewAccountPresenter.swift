@@ -25,20 +25,27 @@ final class ScanNewAccountPresenter: ScanNewAccountPresentable {
     }
     
     func getAccountInfo(from image: UIImage) -> Void {
-        let texts: [String] = interactor.extractText(from: image)
-        guard !texts.isEmpty else {
-            ui?.update(witn: nil)
-            return
+       interactor.extractText(from: image) { [weak self] result in
+           print(result)
+           guard !result.isEmpty else {
+               self?.router.goBack()
+               return
+           }
+           self?.parseeTexts(result)
         }
         
+        
+       
+    }
+    
+    private func parseeTexts(_ texts: [String])  {
         let account = interactor.findAccountImage(from: texts)
-        
         guard let accountEntity = account else {
-            ui?.update(witn: nil)
+            router.goBack()
             return
         }
-        
-        ui?.update(witn: account)
+        print("accountEntity", accountEntity)
+        ui?.update(witn: accountEntity)
     }
     
     func saveAccountInfo(_ account: AccountEntity) {

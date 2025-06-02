@@ -20,6 +20,7 @@ final class ScanNewAccountView: UIViewController {
     init(presenter: ScanNewAccountPresenter, image: UIImage) {
         self.presenter = presenter
         self.image = image
+        self.imageView.image = image
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -31,6 +32,7 @@ final class ScanNewAccountView: UIViewController {
         super.viewDidLoad()
         title = "Detalles"
         navigationItem.largeTitleDisplayMode = .never
+        view.backgroundColor = .systemBackground
         startLoading()
         style()
         scanImge()
@@ -93,8 +95,12 @@ final class ScanNewAccountView: UIViewController {
 extension ScanNewAccountView: ScanNewAccountUI {
     func update(witn account: AccountEntity?) {
         DispatchQueue.main.async {
-//            self.bankAccountInfo = info
-//            self.updateUI(info)
+            if let account = account {
+                self.accountInfoView.configure(with: account)
+                self.accountInfoView.isHidden = false
+                self.buttonsView.isHidden = false
+                self.stopLoading()
+            }
         }
     }
 }

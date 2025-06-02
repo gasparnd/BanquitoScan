@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ScanNewAccountInteractorProtocol {
-    func extractText(from: UIImage) -> [String]
+    func extractText(from: UIImage, completion: @escaping ([String]) -> Void)
     func findAccountImage(from: [String]) -> AccountEntity?
     func saveAccount(account: AccountEntity) async -> Bool
 }

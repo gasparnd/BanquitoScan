@@ -19,16 +19,12 @@ final class ScanNewAccountInteractor: ScanNewAccountInteractorProtocol {
         self.database = database
     }
     
-    func extractText(from image: UIImage) -> [String] {
-        var extractText: [String] = []
-        
+
+    func extractText(from image: UIImage, completion: @escaping ([String]) -> Void) {
         scanner.extractBankAccountInfo(from: image) { result in
-            if !result.isEmpty {
-                extractText = result
-            }
+            print("result", result)
+            completion(result)
         }
-        
-        return extractText
     }
     
     func findAccountImage(from textLines: [String]) -> AccountEntity? {

@@ -56,7 +56,7 @@ final class AccountInfoView: UIView {
         ])
     }
     
-    func configure(with accountData: BankAccountInfo) {
+    func configure(with accountData: AccountEntity) {
         if let nameVale = accountData.name {
             if !nameVale.isEmpty {
                 nameLabel.text = "Nombre: \(nameVale)"
