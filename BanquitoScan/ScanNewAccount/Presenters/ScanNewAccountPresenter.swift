@@ -26,7 +26,6 @@ final class ScanNewAccountPresenter: ScanNewAccountPresentable {
     
     func getAccountInfo(from image: UIImage) -> Void {
        interactor.extractText(from: image) { [weak self] result in
-           print(result)
            guard !result.isEmpty else {
                self?.router.goBack()
                return
@@ -44,7 +43,6 @@ final class ScanNewAccountPresenter: ScanNewAccountPresentable {
             router.goBack()
             return
         }
-        print("accountEntity", accountEntity)
         ui?.update(witn: accountEntity)
     }
     
