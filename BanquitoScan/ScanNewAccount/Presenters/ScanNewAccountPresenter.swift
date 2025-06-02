@@ -13,8 +13,6 @@ protocol ScanNewAccountUI: AnyObject {
 }
 
 final class ScanNewAccountPresenter: ScanNewAccountPresentable {
-    
-    
     weak var ui: ScanNewAccountUI?
     
     var account: AccountEntity?

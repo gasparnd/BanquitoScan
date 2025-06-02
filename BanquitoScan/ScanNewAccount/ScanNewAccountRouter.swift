@@ -13,10 +13,19 @@ protocol ScanNewAccountRouting: AnyObject {
 }
 
 final class ScanNewAccountRouter: ScanNewAccountRouting {
+    var navigationController: UINavigationController?
     
-    func showScanNewAccountView(fromViewController: UIViewController, navigationController: UINavigationController, withImage: Any) {
-        let view = ScanNewAccountView()
+    func showScanNewAccountView(fromViewController: UIViewController, navigationController navController: UINavigationController, withImage: Any) {
+        navigationController = navController
+        let interactor = ScanNewAccountInteractor(database: CoreDataManager.shared)
+        let presenter = ScanNewAccountPresenter(interactor: interactor, router: self)
+        let view = ScanNewAccountView(presenter: presenter)
+        presenter.ui = view
         
-        navigationController.pushViewController(view, animated: true)
+        navigationController?.pushViewController(view, animated: true)
+    }
+    
+    func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 }
