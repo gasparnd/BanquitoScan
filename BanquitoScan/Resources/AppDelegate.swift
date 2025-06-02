@@ -18,14 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         listOfAccountsRouter.showListOfAccounts(window: window)
-//        window?.makeKeyAndVisible()
-//        window?.backgroundColor = .systemBackground
-//        
-//        let vc = HomeViewController()
-//        let navController = UINavigationController(rootViewController: vc)
-//        navController.navigationBar.prefersLargeTitles = true
-//        vc.navigationItem.largeTitleDisplayMode = .always
-//        window?.rootViewController = navController
         
         return true
     }

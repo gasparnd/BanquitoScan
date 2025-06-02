@@ -47,6 +47,8 @@ final class ListOfAccountsView: UIViewController, UINavigationControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Banquito Scan"
+        navigationItem.largeTitleDisplayMode = .always
         setupTableView()
         style()
         layout()
@@ -129,31 +131,31 @@ final class ListOfAccountsView: UIViewController, UINavigationControllerDelegate
         present(alert, animated: true)
     }
     
-        // This create the ImagePicker with the selected soruceType (gallery or camera roll)
-        func openImagePicker(sourceType: UIImagePickerController.SourceType) {
-            guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
-                print("El tipo de fuente no está disponible en este dispositivo.")
-                return
-            }
-    
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = sourceType
-            imagePicker.allowsEditing = true
-    
-            present(imagePicker, animated: true)
+    // This create the ImagePicker with the selected soruceType (gallery or camera roll)
+    func openImagePicker(sourceType: UIImagePickerController.SourceType) {
+        guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
+            print("El tipo de fuente no está disponible en este dispositivo.")
+            return
         }
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
+        
+        present(imagePicker, animated: true)
+    }
     
-        // MARK: - UIImagePickerControllerDelegate
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            if let selectedImage = info[.editedImage] as? UIImage {
-                picker.dismiss(animated: true)
-                presenter.scanNewAccount(image: selectedImage)
-            } else if let originalImage = info[.originalImage] as? UIImage {
-                picker.dismiss(animated: true)
-                presenter.scanNewAccount(image: originalImage)
-            }
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let selectedImage = info[.editedImage] as? UIImage {
+            picker.dismiss(animated: true)
+            presenter.scanNewAccount(image: selectedImage)
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            picker.dismiss(animated: true)
+            presenter.scanNewAccount(image: originalImage)
         }
+    }
     
 }
 

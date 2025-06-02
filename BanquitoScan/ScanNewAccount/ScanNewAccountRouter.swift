@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 protocol ScanNewAccountRouting: AnyObject {
-    func showScanNewAccountView(fromViewController: UIViewController, withImage: Any)
+    func showScanNewAccountView(fromViewController: UIViewController, navigationController: UINavigationController, withImage: Any)
 }
 
 final class ScanNewAccountRouter: ScanNewAccountRouting {
     
-    func showScanNewAccountView(fromViewController: UIViewController, withImage: Any) {
+    func showScanNewAccountView(fromViewController: UIViewController, navigationController: UINavigationController, withImage: Any) {
         let view = ScanNewAccountView()
         
-        fromViewController.present(view, animated: true)
+        navigationController.pushViewController(view, animated: true)
     }
 }
