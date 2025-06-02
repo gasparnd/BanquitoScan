@@ -24,6 +24,8 @@
 		EB6173B12D4456FD00824C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B02D4456FD00824C77 /* Assets.xcassets */; };
 		EB6173B42D4456FD00824C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB6173B22D4456FD00824C77 /* LaunchScreen.storyboard */; };
 		EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6173D12D45720E00824C77 /* BankAccountScanner.swift */; };
+		EBA59B172DED1FE40027F524 /* ScanNewAccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA59B162DED1FE40027F524 /* ScanNewAccountRouter.swift */; };
+		EBA59B192DED1FF20027F524 /* ScanNewAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA59B182DED1FF20027F524 /* ScanNewAccountView.swift */; };
 		EBFF5C392DECDBC400CBFDE7 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF5C382DECDBC400CBFDE7 /* DatabaseProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		EB6173B32D4456FD00824C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB6173B52D4456FD00824C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB6173D12D45720E00824C77 /* BankAccountScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountScanner.swift; sourceTree = "<group>"; };
+		EBA59B162DED1FE40027F524 /* ScanNewAccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanNewAccountRouter.swift; sourceTree = "<group>"; };
+		EBA59B182DED1FF20027F524 /* ScanNewAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanNewAccountView.swift; sourceTree = "<group>"; };
 		EBFF5C382DECDBC400CBFDE7 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +161,7 @@
 		EB6173A62D4456FC00824C77 /* BanquitoScan */ = {
 			isa = PBXGroup;
 			children = (
+				EBA59B152DED1FC30027F524 /* ScanNewAccount */,
 				EBFF5C2C2DECD97500CBFDE7 /* ListOfAccounts */,
 				EB437B7D2D7CC536003D0298 /* Views */,
 				EB437B7A2D7CB28C003D0298 /* Managers */,
@@ -206,6 +211,15 @@
 				EB437B882D7CF3C0003D0298 /* HapticsFeedback.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		EBA59B152DED1FC30027F524 /* ScanNewAccount */ = {
+			isa = PBXGroup;
+			children = (
+				EBA59B162DED1FE40027F524 /* ScanNewAccountRouter.swift */,
+				EBA59B182DED1FF20027F524 /* ScanNewAccountView.swift */,
+			);
+			path = ScanNewAccount;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,7 +337,9 @@
 				EBFF5C392DECDBC400CBFDE7 /* DatabaseProtocol.swift in Sources */,
 				EB437B562D7C9D83003D0298 /* AccountsData.xcdatamodeld in Sources */,
 				EB6173D22D45720E00824C77 /* BankAccountScanner.swift in Sources */,
+				EBA59B192DED1FF20027F524 /* ScanNewAccountView.swift in Sources */,
 				EB437B8D2D7D08B4003D0298 /* AccountInfoView.swift in Sources */,
+				EBA59B172DED1FE40027F524 /* ScanNewAccountRouter.swift in Sources */,
 				EB437B3D2D673948003D0298 /* RutValidator.swift in Sources */,
 				EB437B832D7CCB92003D0298 /* AccountListCell.swift in Sources */,
 				EB437B3F2D6DCFBB003D0298 /* BankAccount.swift in Sources */,

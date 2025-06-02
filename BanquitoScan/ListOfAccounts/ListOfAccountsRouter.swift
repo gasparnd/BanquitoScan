@@ -14,6 +14,7 @@ protocol ListOfAccountsRouting: AnyObject {
 
 final class ListOfAccountsRouter: ListOfAccountsRouting {
     var listOfAccountsViewController: ListOfAccountsView?
+    var scanNewAccountRouter: ScanNewAccountRouting?
     
     func showListOfAccounts(window: UIWindow?) {
 //        let interactor = ListOfAccountsInteractor(databaseManeger: CoreDataManager.shared)
@@ -21,12 +22,14 @@ final class ListOfAccountsRouter: ListOfAccountsRouting {
         let presenter = ListOfAccountsPresenter(interactor: interactor, router: self)
         listOfAccountsViewController = ListOfAccountsView(presenter: presenter)
         presenter.ui = listOfAccountsViewController
+        scanNewAccountRouter = ScanNewAccountRouter()
         
         window?.rootViewController = listOfAccountsViewController
         window?.makeKeyAndVisible()
     }
     
     func scanNewAccount(image: Any) {
-        print(image)
+        guard let listOfAccountsViewController else { return }
+        scanNewAccountRouter?.showScanNewAccountView(fromViewController: listOfAccountsViewController, withImage: image)
     }
 }
