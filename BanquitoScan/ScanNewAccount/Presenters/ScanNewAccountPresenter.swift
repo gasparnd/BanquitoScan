@@ -43,7 +43,7 @@ final class ScanNewAccountPresenter: ScanNewAccountPresentable {
             router.goBack()
             return
         }
-        ui?.update(witn: accountEntity)
+        ui?.update(with: accountEntity)
     }
     
     func saveAccountInfo(_ account: AccountEntity) {
